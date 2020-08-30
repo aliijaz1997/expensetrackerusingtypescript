@@ -38,7 +38,7 @@ export const transactionContext = createContext(initialstate);
 // transaction above.
 export const GlobalProvider = ({ children }: child) => {
     const [state, dispatch] = useReducer(transactionReducer, initialstate)
-         console.log(state.transaction)
+        //  console.log(state.transaction)
     function addtransaction(transobj: addedtrans) {
         dispatch({
             type: "Add",

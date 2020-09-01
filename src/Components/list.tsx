@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import '../App.css';
 import {transactionContext} from './Contextapi';
-import {addedtrans} from './Contextapi';
+import {TransactionType} from './Contextapi';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -37,16 +37,16 @@ export default function HistoryList() {
     
   // ]
  
-  const {transaction} = useContext(transactionContext);
-  // console.log(transaction);
+  const {thisState} = useContext(transactionContext);
+  // console.log(thisState);
   return (
     <List className={classes.root} >
         <li  className={classes.listSection}>
           <ul className={classes.ul}>
-            {transaction.map((item : addedtrans) => (
+            {thisState.map((item : TransactionType) => (
               <ListItem className = "List" >
-                <ListItemText primary={item} />
-                <ListItemText primary={ `$ ${item}`} />
+                <ListItemText  primary={item.description} />
+                <ListItemText primary={ `$ ${item.amount}`} />
               </ListItem>
             ))}
           </ul>

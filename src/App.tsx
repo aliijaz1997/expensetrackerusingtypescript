@@ -6,25 +6,25 @@ import { GlobalProvider } from './Components/Contextapi'
 import {transactionContext} from './Components/Contextapi';
 function App() {
   // Making usestate to update the amount and description
-  const {  addtransaction }= useContext(transactionContext);
-  // const func = transactions.addtransaction;
-  // console.log(func);
-  
-  const [amount, setAmount] = useState('');
-  const [desc, setDesc] = useState('');
-  const handleAddition = (event: any) => {
+  const {  addTransaction }= useContext(transactionContext);
+
+  const [newamount, setAmount] = useState<number>(0);
+  const [newdesc, setDesc] = useState<string>('');
+  const handleSetDesc = (e:React.ChangeEvent<HTMLInputElement>)=>{setDesc(e.target.value)};
+  const handleSetAmount = (e:React.ChangeEvent<HTMLInputElement>)=>{setAmount(Number(e.target.value))};
+  const handleAddition = (event:React.FormEvent) => {
     event.preventDefault();
-    console.log(desc, amount)
-    const newtransaction = {
-      amount,
-      desc,
-    }
-    addtransaction(newtransaction)
-    console.log( addtransaction(newtransaction))
+    const transaction = {
+      description: newdesc,
+      amount: Number(newamount)
+  }
+    // addnewtransaction(newtransaction)
+    addTransaction(transaction)
+    // console.log(newtransaction)
     
     setDesc('')
-    setAmount('')
-  }
+    setAmount(0)
+  };
 
 
 
@@ -46,13 +46,13 @@ function App() {
           <label>
             Description
       <br />
-            <input type = 'text' placeholder="Enter description" value={desc} onChange={(e) => setDesc(e.target.value)} required />
+            <input type = 'text' placeholder="Enter description" value={newdesc} onChange={handleSetDesc} required />
           </label>
           <br />
           <label>
             Amount
       <br />
-            <input type = 'number' placeholder="Enter amount" value={amount} onChange={(e) => setAmount(e.target.value)} required />
+            <input type = 'number' placeholder="Enter amount" value={newamount} onChange={handleSetAmount} required />
           </label>
           <br />
           <input type="submit" className="button5" value="Add Transaction" />

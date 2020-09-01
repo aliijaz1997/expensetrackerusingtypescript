@@ -4,21 +4,18 @@ import transactionReducer from './reducer';
 // Mking types
 
 
-const initialstate = {
-    transaction: [
-        // { amount: 500, desc: "camera" },
-        // { amount: 500, desc: "camera" },
-        // { amount: 500, desc: "camera" },
-        // { amount: 500, desc: "camera" },
-        // { amount: 500, desc: "camera" }
-    ],
-    addtransaction : (transobj : any) => (transobj),
-
-}
+const initialstate: TransactionType[] = [
+    { amount: 500, description: "camera" },
+    { amount: 500, description: "camera" },
+    { amount: 500, description: "camera" },
+    { amount: 500, description: "camera" },
+    { amount: 500, description: "camera" }
+];
 
 export type addedtrans = {
     amount: number,
     desc: string,
+
 }
 
 type child = {
@@ -26,10 +23,14 @@ type child = {
 }
 
 export type state = {
-    transaction : addedtrans[],
-    addtransation : (transobj : addedtrans) => void
+    transaction: addedtrans[],
 }
-export const transactionContext = createContext(initialstate);
+// type contexttype = {
+//     transaction : addedtrans[],
+//     addnewtransaction : (transobj: addedtrans) => void,
+// }
+export type TransactionType = { description: string; amount: number }
+export const transactionContext = createContext<any>({});
 
 // In reducer one thing must e noted that we always have to arrays
 // state and dispatch. Dispatch always decides which of the action
@@ -37,25 +38,28 @@ export const transactionContext = createContext(initialstate);
 // transaction reducer and initialvalue like in our case it is
 // transaction above.
 export const GlobalProvider = ({ children }: child) => {
-    const [state, dispatch] = useReducer(transactionReducer, initialstate)
-        //  console.log(state.transaction)
-    function addtransaction(transobj: addedtrans) {
+    const [thisState, dispatch] = useReducer(transactionReducer, initialstate)
+    console.log(thisState);
+
+
+    const addTransaction = (transaction: TransactionType) => {
+
         dispatch({
-            type: "Add",
-            payload: transobj,
-            
-        })
+            type: 'AddTransaction',
+            payload: transaction
+        });
     }
-       return (
-           <transactionContext.Provider value = {{
-               
-            transaction: state.transaction,
-            addtransaction,
-           
-           
-           }} >
-                {children}
-           </transactionContext.Provider>
-       )
+
+    return (
+        <transactionContext.Provider value={{
+
+            thisState,
+            addTransaction,
+
+
+        }} >
+            {children}
+        </transactionContext.Provider>
+    )
 
 }

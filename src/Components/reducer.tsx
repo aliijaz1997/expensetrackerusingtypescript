@@ -1,11 +1,11 @@
-const transactionReducer = ((state: any, action : any) => {
+import {addedtrans} from './Contextapi';
+
+const transactionReducer = ((state: addedtrans[], action:{type:string, payload:any,}) => {
      switch (action.type) {
          case "Add":
              console.log(state);
              
-            return {
-                ...state , transaction: [action.payload , ...state.transaction],
-            }
+             return  [...state, action.payload]
          default:
             return state
      }

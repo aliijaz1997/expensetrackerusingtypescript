@@ -43,8 +43,8 @@ export default function HistoryList() {
     <List className={classes.root} >
         <li  className={classes.listSection}>
           <ul className={classes.ul}>
-            {thisState.map((item : TransactionType) => (
-              <ListItem className = "List" >
+            {thisState.map((item : TransactionType, index : number) => (
+              <ListItem key = {index} className = "List" >
                 <ListItemText  primary={item.description} />
                 <ListItemText primary={ `$ ${item.amount}`} />
               </ListItem>

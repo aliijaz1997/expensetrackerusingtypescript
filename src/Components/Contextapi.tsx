@@ -21,6 +21,9 @@ export type addedtrans = {
 type child = {
     children: ReactNode;
 }
+export type GlobalContextPropType = {
+    children: any;
+}
 
 export type state = {
     transaction: addedtrans[],
@@ -37,7 +40,7 @@ export const transactionContext = createContext<any>({});
 // is to be performed and the fucntion usereducer takes updated
 // transaction reducer and initialvalue like in our case it is
 // transaction above.
-export const GlobalProvider = ({ children }: child) => {
+export const GlobalProvider: React.FC<GlobalContextPropType>  = ({ children }) => {
     const [thisState, dispatch] = useReducer(transactionReducer, initialstate)
     console.log(thisState);
 

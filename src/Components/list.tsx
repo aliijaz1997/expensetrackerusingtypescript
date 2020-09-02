@@ -37,13 +37,13 @@ export default function HistoryList() {
     
   // ]
  
-  const {thisState} = useContext(transactionContext);
+  const {transactionListState} = useContext(transactionContext);
   // console.log(thisState);
   return (
     <List className={classes.root} >
         <li  className={classes.listSection}>
           <ul className={classes.ul}>
-            {thisState.map((item : TransactionType, index : number) => (
+            {transactionListState.map((item : TransactionType, index : number) => (
               <ListItem key = {index} className = "List" >
                 <ListItemText  primary={item.description} />
                 <ListItemText primary={ `$ ${item.amount}`} />

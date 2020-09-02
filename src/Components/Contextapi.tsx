@@ -1,18 +1,18 @@
 import React, { createContext, useReducer, ReactNode } from 'react';
-import transactionReducer from './reducer';
+import AppReducer from './reducer';
 
 // Mking types
 
 
 const initialstate: TransactionType[] = [
-    { amount: 500, description: "camera" },
-    { amount: 500, description: "camera" },
-    { amount: 500, description: "camera" },
-    { amount: 500, description: "camera" },
-    { amount: 500, description: "camera" }
-];
+    { amount: -500, description: "book" },
+    { amount: 225, description: "soophley" },
+    { amount: -300, description: "credit deduct" },
+    { amount: 25, description: "ice cream" },
+    { amount: -70, description: "loan" },
+]
 
-export type addedtrans = {
+ type addedtrans = {
     amount: number,
     desc: string,
 
@@ -40,29 +40,27 @@ export const transactionContext = createContext<any>({});
 // is to be performed and the fucntion usereducer takes updated
 // transaction reducer and initialvalue like in our case it is
 // transaction above.
-export const GlobalProvider: React.FC<GlobalContextPropType>  = ({ children }) => {
-    const [thisState, dispatch] = useReducer(transactionReducer, initialstate)
-    console.log(thisState);
-
-
+export const GlobalProvider: React.FC<GlobalContextPropType> = ({ children }) => {
+    const [transactionListState, dispatch] = useReducer(AppReducer, initialstate);
+   console.log(transactionListState);
+   
     const addTransaction = (transaction: TransactionType) => {
-
         dispatch({
             type: 'AddTransaction',
             payload: transaction
         });
     }
 
+    // const deleteTransaction = (index: number) => {
+    //     dispatch({
+    //         type: 'DeleteTransaction',
+    //         payload: index
+    //     });
+    // }
+
     return (
-        <transactionContext.Provider value={{
-
-            thisState,
-            addTransaction,
-
-
-        }} >
+        <transactionContext.Provider value={{ transactionListState, addTransaction}}>
             {children}
         </transactionContext.Provider>
     )
-
 }

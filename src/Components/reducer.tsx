@@ -1,14 +1,18 @@
 import {TransactionType} from './Contextapi';
 
-const transactionReducer = ((state: TransactionType[], action:{type:string, payload:any,}) => {
-     switch (action.type) {
-         case "Add":
-             console.log(state);
-             
-             return  [...state, action.payload]
-         default:
-            return state
-     }
+// type StateType: TransactionType[] ;
+
+const AppReducer = (state:TransactionType[], action:{type:string, payload:any,}) => {
+    switch (action.type){
+        case "AddTransaction":
+            return  [...state, action.payload]
+            
+        // case "DeleteTransaction":
+        //     return state.filter((transaction:TransactionType,index:number)=>(index !== action.payload))
+
+        default:
+            return state;
     }
-    )
-    export default transactionReducer;
+}
+
+export default AppReducer;

@@ -1,0 +1,17 @@
+.form {
+    font-weight: bold;
+    /* text-align: center */
+    ;
+  }
+  .form input {
+    padding: 5px 0;
+    margin: 5px;
+    outline-color: black;
+    max-width: 300px;
+  }
+  .label {
+       margin-right: 215px;   
+    }
+    .container-input {
+        margin-right: 55px;
+    }

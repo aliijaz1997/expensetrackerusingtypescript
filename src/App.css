@@ -10,15 +10,7 @@
   margin-bottom: 50px;
 
 }
-.form {
-  font-weight: bold;
-}
-.form input {
-  padding: 5px 0;
-  margin: 5px;
-  outline-color: black;
-  max-width: 300px;
-}
+
 .Income-Expense {
   background-color: rgb(20, 20, 20);
   color: whitesmoke;

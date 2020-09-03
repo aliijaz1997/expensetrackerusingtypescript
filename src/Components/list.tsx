@@ -1,11 +1,12 @@
-import React , {useContext} from 'react';
+import React, { useContext } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import '../App.css';
-import {transactionContext} from './Contextapi';
-import {TransactionType} from './Contextapi';
+import { transactionContext } from './Contextapi';
+import { TransactionType } from './Contextapi';
+import image from '../Images/delete.png';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -27,29 +28,33 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function HistoryList() {
-  const classes = useStyles(); 
+  const classes = useStyles();
   // let transacton : {amount: number , desc: string } [] = [
   //   {amount :500 , desc: "camera"},
   //   {amount :500 , desc: "camera"},
   //   {amount :500 , desc: "camera"},
   //   {amount :500 , desc: "camera"},
   //   {amount :500 , desc: "camera"},
-    
+
   // ]
- 
-  const {transactionListState} = useContext(transactionContext);
+
+  const { transactionListState, deleteTransaction } = useContext(transactionContext);
   return (
     <List className={classes.root} >
-        <li  className={classes.listSection}>
-          <ul className={classes.ul}>
-            {transactionListState.map((item : TransactionType, index : number) => (
-              <ListItem key = {index} className = "List" >
-                <ListItemText  primary={item.description} />
-                <ListItemText primary={ `$ ${item.amount}`} />
-              </ListItem>
-            ))}
-          </ul>
-        </li>
+      <li className={classes.listSection}>
+        <ul className={classes.ul}>
+          {transactionListState.map((item: TransactionType, index: number) => (
+            <ListItem key={index} className="List" >
+              <button className = "btn" onClick={() => deleteTransaction(index)}>
+              <img className = "image" src = {image} alt= "delete" />
+              </button>
+              <ListItemText primary={item.description} />
+              <ListItemText className="listamount" primary={`$ ${item.amount}`} />
+            </ListItem>
+          ))}
+
+        </ul>
+      </li>
     </List>
   );
 }

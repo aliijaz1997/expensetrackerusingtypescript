@@ -8,8 +8,8 @@ const initialstate: TransactionType[] = [
     { amount: -500, description: "book" },
     { amount: 225, description: "soophley" },
     { amount: -300, description: "credit deduct" },
-    { amount: 25, description: "ice cream" },
-    { amount: -70, description: "loan" },
+    { amount: 205, description: "ice cream" },
+    { amount: -700, description: "loan" },
 ]
 
  type addedtrans = {
@@ -51,15 +51,15 @@ export const GlobalProvider: React.FC<GlobalContextPropType> = ({ children }) =>
         });
     }
 
-    // const deleteTransaction = (index: number) => {
-    //     dispatch({
-    //         type: 'DeleteTransaction',
-    //         payload: index
-    //     });
-    // }
+    const deleteTransaction = (index: number) => {
+        dispatch({
+            type: 'DeleteTransaction',
+            payload: index
+        });
+    }
 
     return (
-        <transactionContext.Provider value={{ transactionListState, addTransaction}}>
+        <transactionContext.Provider value={{ transactionListState, addTransaction, deleteTransaction}}>
             {children}
         </transactionContext.Provider>
     )

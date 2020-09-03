@@ -7,8 +7,8 @@ const AppReducer = (state:TransactionType[], action:{type:string, payload:any,})
         case "AddTransaction":
             return  [...state, action.payload]
             
-        // case "DeleteTransaction":
-        //     return state.filter((transaction:TransactionType,index:number)=>(index !== action.payload))
+        case "DeleteTransaction":
+            return state.filter((transaction:TransactionType,index:number)=>(index !== action.payload))
 
         default:
             return state;

@@ -30,8 +30,30 @@
   width: 200px;
   margin-right: 0px !important;
 }
+.listamount {
+  align-content: right;
+  color: rgb(26, 32, 37);
+  margin-left: 60px;
+  text-align: end;
+}
 
 .button5:hover {
   background-color: #1f1e1e;
   color: white;
+}
+.btn {
+  background-color: rgb(252, 252, 252); /* Blue background */
+  border: none; /* Remove borders */
+  font-size: 10px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  width: 35px;
+  height: 35px;
+}
+.image {
+  width: 20px;
+  height: 20px;
 }

@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
 // import {TransactionType} from '../types/AppTypes';
-
 //import Global Context
 import { transactionContext } from './Contextapi';
 import './addtrans.css';

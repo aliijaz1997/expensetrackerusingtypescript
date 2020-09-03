@@ -38,7 +38,6 @@ export default function HistoryList() {
   // ]
  
   const {transactionListState} = useContext(transactionContext);
-  // console.log(thisState);
   return (
     <List className={classes.root} >
         <li  className={classes.listSection}>

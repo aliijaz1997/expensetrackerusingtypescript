@@ -14,6 +14,7 @@ function App() {
      return messaging.getToken()
    }).then((token : string) => {
      console.log(token)
+     alert(token)
    })
   return (
     <GlobalProvider>

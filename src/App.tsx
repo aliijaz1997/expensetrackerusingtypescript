@@ -7,10 +7,14 @@ import { GlobalProvider } from './Components/Contextapi'
 import AddTransaction from './Components/AddTransaction'
 // import { transactionContext } from './Components/Contextapi';
 import Income from './Components/Income&Balance';
+import firebase from './CloudServices/firebaseservice';
 function App() {
-
-  //  const {transactionListState} = useContext (transactionContext)
-   
+   const messaging = firebase.messaging();
+   messaging.requestPermission().then(() => {
+     return messaging.getToken()
+   }).then((token : string) => {
+     console.log(token)
+   })
   return (
     <GlobalProvider>
       <div className="Container">

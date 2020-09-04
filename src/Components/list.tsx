@@ -45,8 +45,8 @@ export default function HistoryList() {
         <ul className={classes.ul}>
           {transactionListState.map((item: TransactionType, index: number) => (
             <ListItem key={index} className="List" >
-              <button className = "btn" onClick={() => deleteTransaction(index)}>
-              <img className = "image" src = {image} alt= "delete" />
+              <button className="btn" onClick={() => deleteTransaction(index)}>
+                <img className="image" src={image} alt="delete" />
               </button>
               <ListItemText primary={item.description} />
               <ListItemText className="listamount" primary={`$ ${item.amount}`} />

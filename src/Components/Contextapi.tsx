@@ -12,7 +12,7 @@ const initialstate: TransactionType[] = [
     { amount: -700, description: "loan" },
 ]
 
- type addedtrans = {
+type addedtrans = {
     amount: number,
     desc: string,
 
@@ -42,8 +42,8 @@ export const transactionContext = createContext<any>({});
 // transaction above.
 export const GlobalProvider: React.FC<GlobalContextPropType> = ({ children }) => {
     const [transactionListState, dispatch] = useReducer(AppReducer, initialstate);
-//    console.log(transactionListState);
-   
+    //    console.log(transactionListState);
+
     const addTransaction = (transaction: TransactionType) => {
         dispatch({
             type: 'AddTransaction',
@@ -59,7 +59,7 @@ export const GlobalProvider: React.FC<GlobalContextPropType> = ({ children }) =>
     }
 
     return (
-        <transactionContext.Provider value={{ transactionListState, addTransaction, deleteTransaction}}>
+        <transactionContext.Provider value={{ transactionListState, addTransaction, deleteTransaction }}>
             {children}
         </transactionContext.Provider>
     )

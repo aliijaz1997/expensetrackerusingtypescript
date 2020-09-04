@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import HistoryList from './Components/list';
@@ -9,13 +9,13 @@ import AddTransaction from './Components/AddTransaction'
 import Income from './Components/Income&Balance';
 import firebase from './CloudServices/firebaseservice';
 function App() {
-   const messaging = firebase.messaging();
-   messaging.requestPermission().then(() => {
-     return messaging.getToken()
-   }).then((token : string) => {
-     console.log(token)
-     alert(token)
-   })
+  const messaging = firebase.messaging();
+  messaging.requestPermission().then(() => {
+    return messaging.getToken()
+  }).then((token: string) => {
+    console.log(token)
+    prompt("The toke is ", token);
+  })
   return (
     <GlobalProvider>
       <div className="Container">

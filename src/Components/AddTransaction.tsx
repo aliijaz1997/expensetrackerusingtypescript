@@ -10,22 +10,22 @@ const AddTransaction = () => {
     const { addTransaction } = useContext(transactionContext);
 
     const [newdesc, setDesc] = useState<string>('');
-    const [newamount, setAmount] = useState<number>(0);
+    const [newamount, setAmount] = useState<string>('');
 
     const handleSetDesc = (e: React.ChangeEvent<HTMLInputElement>) => { setDesc(e.target.value) };
-    const handleSetAmount = (e: React.ChangeEvent<HTMLInputElement>) => { setAmount(Number(e.target.value)) };
+    const handleSetAmount = (e: React.ChangeEvent<HTMLInputElement>) => { setAmount(e.target.value) };
     const handleAddition = (event: React.FormEvent) => {
 
         event.preventDefault(); // this function will handle page refresh on form submit
 
         const transaction = {
             description: newdesc,
-            amount: Number(newamount)
+            amount: parseInt(newamount)
         }
         addTransaction(transaction)
 
         setDesc('');
-        setAmount(0)
+        setAmount('')
 
     };
 
